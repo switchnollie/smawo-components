@@ -1,0 +1,92 @@
+.toggle-label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent; }
+  .toggle-label .toggle-container {
+    width: 73px;
+    display: inline-flex;
+    position: relative;
+    flex-shrink: 0;
+    vertical-align: middle; }
+    .toggle-label .toggle-container .animated-toggle-knob-wrapper {
+      color: #1964cc;
+      z-index: 1;
+      transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      display: inline-flex;
+      flex: 0 0 auto;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      font-size: 1.5rem;
+      text-align: center;
+      border-radius: 50%;
+      align-items: center;
+      cursor: pointer;
+      margin: 0;
+      border: 0;
+      outline: none;
+      position: relative;
+      user-select: none;
+      vertical-align: middle;
+      justify-content: center;
+      -moz-appearance: none;
+      text-decoration: none;
+      background-color: transparent;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent; }
+      .toggle-label .toggle-container .animated-toggle-knob-wrapper .input-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: inherit;
+        justify-content: inherit; }
+        .toggle-label .toggle-container .animated-toggle-knob-wrapper .input-wrapper input[type="checkbox"] {
+          top: 0;
+          left: 0;
+          width: 100%;
+          cursor: inherit;
+          height: 100%;
+          margin: 0;
+          opacity: 0;
+          padding: 0;
+          position: absolute;
+          appearance: checkbox; }
+        .toggle-label .toggle-container .animated-toggle-knob-wrapper .input-wrapper .toggle-knob {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: currentColor;
+          color: #696c8c; }
+      .toggle-label .toggle-container .animated-toggle-knob-wrapper .pulsate-circle {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        z-index: 0;
+        position: absolute;
+        overflow: hidden;
+        border-radius: inherit;
+        pointer-events: none; }
+      .toggle-label .toggle-container .animated-toggle-knob-wrapper.on {
+        transform: translateX(26px); }
+        .toggle-label .toggle-container .animated-toggle-knob-wrapper.on .toggle-knob {
+          color: #1964cc; }
+    .toggle-label .toggle-container .toggle-track {
+      top: 50%;
+      left: 50%;
+      width: 50px;
+      height: 24px;
+      display: block;
+      position: absolute;
+      margin-top: -12px;
+      transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      margin-left: -25px;
+      border-radius: 12px;
+      background-color: #000;
+      opacity: 0.37; }
+  .toggle-label .toggle-label-text {
+    color: #7e81a8;
+    margin: 0;
+    display: block; }

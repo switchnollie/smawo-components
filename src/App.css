@@ -1,0 +1,7 @@
+.App {
+  margin: 3rem; }
+  .App .pagination-dots-container {
+    margin: 20px 0; }
+  .App .list-container {
+    position: relative;
+    width: 456px; }
