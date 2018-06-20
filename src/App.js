@@ -12,8 +12,6 @@ const listItems = ["Weckrhythmus", "Modus", "Schlummern"];
 
 class App extends Component {
   state = {
-    selectedStep: 2,
-    numberOfSteps: 3,
     firstToggleOn: true,
     secondToggleOn: false,
     days: [true, false, true, true, true, false, false],
@@ -25,8 +23,6 @@ class App extends Component {
 
   toggleSecond = e =>
     this.setState(state => ({ secondToggleOn: !state.secondToggleOn }));
-
-  onDotClick = dotIndex => this.setState({ selectedStep: dotIndex });
 
   onDayClick = dayIndex =>
     this.setState(state => ({ days: this.toggleDay(dayIndex) }));
@@ -40,13 +36,7 @@ class App extends Component {
   onListItemClick = value => this.setState({ selectedListItem: value });
 
   render() {
-    const {
-      selectedStep,
-      numberOfSteps,
-      firstToggleOn,
-      secondToggleOn,
-      days
-    } = this.state;
+    const { firstToggleOn, secondToggleOn, days } = this.state;
 
     return (
       <div className="App">
@@ -64,13 +54,7 @@ class App extends Component {
         />
         <RoundBtn type="done" />
         <RoundBtn type="cancel" />
-        <div className="pagination-dots-container">
-          <PaginationDots
-            steps={numberOfSteps}
-            currentStep={selectedStep}
-            onClick={this.onDotClick.bind(this)}
-          />
-        </div>
+
         <DayPicker days={days} onClick={this.onDayClick.bind(this)} />
         <div className="list-container">
           <List>
