@@ -90,3 +90,5 @@
     color: #7e81a8;
     margin: 0;
     display: block; }
+  .toggle-label.selected .animated-toggle-knob-wrapper.on .toggle-knob {
+    color: #fff; }

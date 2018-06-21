@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { selectAllAlarms } from "../reducers/appReducer";
 import AlarmList from "../components/AlarmList/AlarmList";
 import AlarmListItem from "../components/AlarmList/AlarmListItem";
+import { toggleAlarm, toggleDay } from "../actions/alarmActions";
 
 class Alarms extends Component {
   state = {
@@ -17,8 +18,13 @@ class Alarms extends Component {
     return (
       <div className="alarms-main">
         <AlarmList>
+          <li className="list-item new-alarm">
+            {"+"}
+            <span>Wecker hinzufügen</span>
+          </li>
           {alarms.map(({ name, isOn, days, time, id }) => (
             <AlarmListItem
+              key={id}
               id={id}
               name={name}
               isOn={isOn}
@@ -26,6 +32,8 @@ class Alarms extends Component {
               time={time}
               onClick={() => this.onListItemClick(id)}
               active={id === this.state.selectedListItem}
+              toggleAlarm={() => this.props.toggleAlarm(id)}
+              toggleDay={index => this.props.toggleDay(id, index)}
             />
           ))}
         </AlarmList>
@@ -34,6 +42,10 @@ class Alarms extends Component {
   }
 }
 
-export default (Alarms = connect(state => ({ alarms: selectAllAlarms(state) }))(
-  Alarms
-));
+export default (Alarms = connect(
+  state => ({ alarms: selectAllAlarms(state) }),
+  dispatch => ({
+    toggleAlarm: id => dispatch(toggleAlarm(id)),
+    toggleDay: (id, index) => dispatch(toggleDay(id, index))
+  })
+)(Alarms));

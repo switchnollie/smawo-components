@@ -4,14 +4,39 @@ import CakeIcon from "../assets/cakeIcon.svg";
 import TodayIcon from "../assets/todayIcon.svg";
 import "./Feed.css";
 
+const getMonthName = date => {
+  const monthNames = "Januar Februar März April Mai Juni Juli August September Oktober November Dezember".split(
+    " "
+  );
+  return monthNames[date.getMonth()];
+};
+
+const getDayName = date => {
+  const dayNames = "Montag Dienstag Mittwoch Donnerstag Freitag Samstag Sonntag".split(
+    " "
+  );
+  return dayNames[date.getDay() - 1];
+};
+
+let dateObj = new Date();
+
+let time = dateObj.toLocaleTimeString([], {
+  hour: "2-digit",
+  minute: "2-digit"
+});
+
+let date = `${getDayName(dateObj)}, ${dateObj.getDate()}.${getMonthName(
+  dateObj
+)}`;
+
 export default class Feed extends Component {
   render() {
     return (
       <div className="feed-main">
         <div className="time-container">
           <div className="time">
-            <span>07:45</span>
-            <span>Freitag, 13.Juli</span>
+            <span>{time.substring()}</span>
+            <span>{date}</span>
           </div>
         </div>
         <ul className="widgets">

@@ -4,13 +4,15 @@ import PropTypes from "prop-types";
 
 export default class Toggle extends Component {
   render() {
-    const { label, onChange, checked, ...other } = this.props;
+    const { label, onChange, checked, isSelected, ...other } = this.props;
     return (
-      <label className="toggle-label" {...other}>
+      <label
+        className={`toggle-label ${isSelected ? "selected" : ""}`}
+        {...other}>
         <span className="toggle-container">
           <span
             className={`animated-toggle-knob-wrapper ${checked ? "on" : ""}`}
-            onClick={e => onChange(e)}>
+            onClick={() => onChange()}>
             <span className="input-wrapper">
               <span className="toggle-knob" />
               <input type="checkbox" value={checked} />
@@ -28,6 +30,7 @@ export default class Toggle extends Component {
 Toggle.propTypes = {
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool.isRequired,
+  isSelected: PropTypes.bool.isRequired,
   label: PropTypes.string,
   style: PropTypes.object
 };

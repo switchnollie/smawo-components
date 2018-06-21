@@ -24,7 +24,7 @@ const initialState = {
       },
       ferien0: {
         id: "ferien0",
-        isOn: true,
+        isOn: false,
         name: "Ferien",
         time: "10:00",
         days: [true, true, true, true, true, true, true]
@@ -36,7 +36,19 @@ const initialState = {
 
 const appReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case "FOO":
+    case "TOGGLE_ALARM": {
+      const newState = Object.assign(state, {});
+      const currentIsOn = newState.alarms.byId[action.id].isOn;
+      newState.alarms.byId[action.id].isOn = !currentIsOn;
+      return newState;
+    }
+    case "TOGGLE_DAY": {
+      const newState = Object.assign(state, {});
+      const currentDays = newState.alarms.byId[action.id].days;
+      currentDays[action.index] = !currentDays[action.index];
+      newState.alarms.byId[action.id].days = currentDays;
+      return newState;
+    }
     default:
       return state;
   }
