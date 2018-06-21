@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Combined Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="UI_2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-8-Copy" transform="translate(-215.000000, -91.000000)" fill="#FFFFFF">
+            <path d="M225,99 L225,95 C225,94.4477153 224.552285,94 224,94 C223.447715,94 223,94.4477153 223,95 L223,99 L219,99 C218.447715,99 218,99.4477153 218,100 C218,100.552285 218.447715,101 219,101 L223,101 L223,105 C223,105.552285 223.447715,106 224,106 C224.552285,106 225,105.552285 225,105 L225,101 L229,101 C229.552285,101 230,100.552285 230,100 C230,99.4477153 229.552285,99 229,99 L225,99 Z M217,91 L231,91 C232.104569,91 233,91.8954305 233,93 L233,107 C233,108.104569 232.104569,109 231,109 L217,109 C215.895431,109 215,108.104569 215,107 L215,93 C215,91.8954305 215.895431,91 217,91 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

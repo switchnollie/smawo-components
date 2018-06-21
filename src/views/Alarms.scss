@@ -1,6 +1,123 @@
-.alarms-main {
+@import "../colors.scss";
+
+.alarms-wrapper {
   flex: 1;
   display: flex;
   width: 100%;
   position: relative;
+  flex-direction: column;
+
+  .alarms-header {
+    padding: 0 20px;
+    display: flex;
+    position: relative;
+    height: 40px;
+    align-items: center;
+    position: relative;
+    color: $greyTypo;
+    font-size: 13px;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        rgba(126, 129, 168, 0) 0%,
+        rgba(181, 183, 211, 0.4) 3%,
+        rgba(181, 183, 211, 0.4) 97%,
+        rgba(126, 129, 168, 0) 100%
+      );
+    }
+  }
+
+  .alarms-main {
+    display: flex;
+    position: relative;
+
+    .alarms-side-panel {
+      width: 60px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      &:after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(126, 129, 168, 0) 0%,
+          rgba(181, 183, 211, 0.4) 3%,
+          rgba(181, 183, 211, 0.4) 97%,
+          rgba(126, 129, 168, 0) 100%
+        );
+      }
+
+      .alarm-menu-mode {
+        display: flex;
+        width: 60px;
+        height: 60px;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.2s ease-in-out;
+        cursor: pointer;
+
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(
+            to right,
+            rgba(126, 129, 168, 0) 0%,
+            rgba(181, 183, 211, 0.4) 3%,
+            rgba(181, 183, 211, 0.4) 97%,
+            rgba(126, 129, 168, 0) 100%
+          );
+        }
+
+        &.active {
+          background-color: $accentBlue;
+        }
+      }
+    }
+
+    .alarm-settings-lv1 {
+      flex: 1 1 50%;
+      position: relative;
+      margin: 0;
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(126, 129, 168, 0) 0%,
+          rgba(181, 183, 211, 0.4) 3%,
+          rgba(181, 183, 211, 0.4) 97%,
+          rgba(126, 129, 168, 0) 100%
+        );
+      }
+      .list-item.header {
+        justify-content: flex-start;
+        color: $primaryTypo;
+        font-size: 13px;
+
+        img {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
 }

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import Toggle from "../Toggle/Toggle";
 import DayPicker from "../DayPicker/DayPicker";
-import "./Alarms.css";
+import "./AlarmList.css";
 
 const AlarmListItem = ({
   onClick,
@@ -13,7 +13,8 @@ const AlarmListItem = ({
   time,
   id,
   toggleAlarm,
-  toggleDay
+  toggleDay,
+  collapsed
 }) => (
   <li
     className={`list-item ${active ? "active" : ""}`}
@@ -24,8 +25,12 @@ const AlarmListItem = ({
       isSelected={active}
       checked={isOn}
     />
-    <span className="alarm-time">{time}</span>
-    <DayPicker days={days} onClick={index => toggleDay(index)} />
+    {!collapsed && (
+      <Fragment>
+        <span className="alarm-time">{time}</span>
+        <DayPicker days={days} onClick={index => toggleDay(index)} />
+      </Fragment>
+    )}
   </li>
 );
 

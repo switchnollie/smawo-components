@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>settings</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="MaterialIcons-Regular, Material Icons" font-size="16" font-weight="normal" letter-spacing="0.6666666">
+        <g id="List/Item/With-Icon/Collapsed/Active" transform="translate(-21.000000, -23.000000)" fill="#FFFFFF">
+            <text id="settings">
+                <tspan x="20.1666667" y="38">settings</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

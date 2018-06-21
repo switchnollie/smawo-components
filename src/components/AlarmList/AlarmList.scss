@@ -6,12 +6,16 @@
   width: 100%;
   padding: 0;
   margin: 0;
+  transition: width 0.3s ease-out;
+  &.collapsed {
+    width: calc(50% - 60px) !important;
+  }
 
   .list-item {
     cursor: pointer;
     display: flex;
     position: relative;
-    padding: 0 44px;
+    padding: 0 20px;
     height: 60px;
     justify-content: space-between;
     align-items: center;
@@ -19,7 +23,10 @@
 
     &.new-alarm {
       justify-content: flex-start;
-      span {
+      color: $primaryTypo;
+      font-size: 13px;
+
+      img {
         margin-left: 8px;
       }
     }

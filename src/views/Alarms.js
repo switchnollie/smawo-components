@@ -2,41 +2,74 @@ import React, { Component } from "react";
 import "./Alarms.css";
 import { connect } from "react-redux";
 import { selectAllAlarms } from "../reducers/appReducer";
-import AlarmList from "../components/AlarmList/AlarmList";
-import AlarmListItem from "../components/AlarmList/AlarmListItem";
 import { toggleAlarm, toggleDay } from "../actions/alarmActions";
+import AlarmIcon from "../assets/alarm.svg";
+import FamilyIcon from "../assets/group.svg";
+import MyAlarms from "./MyAlarms";
+
+export const subMenus1 = [
+  { title: "Deine Wecker", img: AlarmIcon },
+  { title: "Familienwecker", img: FamilyIcon }
+];
+
+export const subMenus2 = [
+  { title: "Zeit" },
+  { title: "Wochentag" },
+  { title: "Schlummern" },
+  { title: "Name" }
+];
 
 class Alarms extends Component {
   state = {
-    selectedListItem: null
+    selectedAlarm: null,
+    selectedSubMenu1: "Deine Wecker",
+    selectedSubMenu2: null
   };
 
-  onListItemClick = value => this.setState({ selectedListItem: value });
+  onAlarmListItemClick = value => this.setState({ selectedAlarm: value });
+
+  onSubMenu2Click = menu => this.setState({ selectedSubMenu2: menu });
 
   render() {
     const { alarms } = this.props;
+    const { selectedSubMenu1, selectedSubMenu2, selectedAlarm } = this.state;
+
+    let renderedSubMenu1 = null;
+
+    if (selectedSubMenu1 === "Deine Wecker") {
+      renderedSubMenu1 = (
+        <MyAlarms
+          alarms={alarms}
+          selectedAlarm={selectedAlarm}
+          toggleAlarm={this.props.toggleAlarm}
+          toggleDay={this.props.toggleDay}
+          onAlarmListItemClick={this.onAlarmListItemClick}
+          selectedSubMenu2={selectedSubMenu2}
+          onSubMenu2Click={this.onSubMenu2Click}
+        />
+      );
+    } else if (selectedSubMenu1 === "Familienwecker") {
+      renderedSubMenu1 = null;
+    }
+
     return (
-      <div className="alarms-main">
-        <AlarmList>
-          <li className="list-item new-alarm">
-            {"+"}
-            <span>Wecker hinzufügen</span>
-          </li>
-          {alarms.map(({ name, isOn, days, time, id }) => (
-            <AlarmListItem
-              key={id}
-              id={id}
-              name={name}
-              isOn={isOn}
-              days={days}
-              time={time}
-              onClick={() => this.onListItemClick(id)}
-              active={id === this.state.selectedListItem}
-              toggleAlarm={() => this.props.toggleAlarm(id)}
-              toggleDay={index => this.props.toggleDay(id, index)}
-            />
-          ))}
-        </AlarmList>
+      <div className="alarms-wrapper">
+        <div className="alarms-header">{selectedSubMenu1}</div>
+        <div className="alarms-main">
+          <div className="alarms-side-panel">
+            {subMenus1.map(menu => (
+              <div
+                className={`alarm-menu-mode ${
+                  selectedSubMenu1 === menu.title ? "active" : ""
+                }`}
+                onClick={() => this.setState({ selectedSubMenu1: menu.title })}>
+                <img src={menu.img} />
+              </div>
+            ))}
+          </div>
+          {/* TODO: Seperate ownAlarms view and familyAlarms view from this component */}
+          {renderedSubMenu1}
+        </div>
       </div>
     );
   }
