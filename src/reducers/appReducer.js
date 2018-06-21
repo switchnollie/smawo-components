@@ -32,9 +32,17 @@ const initialState = {
         time: "10:00",
         days: [true, true, true, true, true, true, true],
         scene: "Calm Start"
+      },
+      traning0: {
+        id: "traning0",
+        isOn: false,
+        name: "Traning",
+        time: "18:00",
+        days: [true, true, true, true, true, false, false],
+        scene: "Energy Boost"
       }
     },
-    allIds: ["universitaet0", "universitaet1", "arbeit0", "ferien0"]
+    allIds: ["universitaet0", "universitaet1", "arbeit0", "ferien0", "traning0"]
   }
 };
 

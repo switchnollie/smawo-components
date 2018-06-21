@@ -6,6 +6,7 @@ import { toggleAlarm, toggleDay } from "../actions/alarmActions";
 import AlarmIcon from "../assets/alarm.svg";
 import FamilyIcon from "../assets/group.svg";
 import MyAlarms from "./MyAlarms";
+import Background from "../assets/BackgroundBottom.png";
 
 export const subMenus1 = [
   { title: "Deine Wecker", img: AlarmIcon },
@@ -33,7 +34,7 @@ class Alarms extends Component {
   onSidebarClick = menu => {
     this.setState({ selectedSubMenu1: menu.title });
     if (this.state.selectedAlarm) {
-      this.setState({ selectedAlarm: null });
+      this.setState({ selectedAlarm: null, selectedSubMenu2: null });
     }
   };
 
@@ -76,6 +77,7 @@ class Alarms extends Component {
           </div>
           {/* TODO: Seperate ownAlarms view and familyAlarms view from this component */}
           {renderedSubMenu1}
+          <img id="overlay-bottom" src={Background} />
         </div>
       </div>
     );

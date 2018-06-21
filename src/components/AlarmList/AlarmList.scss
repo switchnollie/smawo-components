@@ -7,6 +7,8 @@
   padding: 0;
   margin: 0;
   transition: width 0.2s ease-out;
+  display: flex;
+  flex-direction: column;
   &.collapsed {
     width: calc(50% - 60px) !important;
   }
@@ -20,6 +22,10 @@
     justify-content: space-between;
     align-items: center;
     color: #fff;
+
+    &:last-child {
+      padding-bottom: 60px;
+    }
 
     &.new-alarm {
       justify-content: flex-start;

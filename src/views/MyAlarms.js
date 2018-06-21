@@ -35,27 +35,29 @@ export default class MyAlarms extends Component {
             <span>Wecker hinzufügen</span>
             <img src={PlusIcon} />
           </li>
-          {alarms.map(({ name, isOn, days, time, id }) => (
-            <AlarmListItem
-              key={id}
-              id={id}
-              name={name}
-              isOn={isOn}
-              days={days}
-              time={time}
-              onClick={() => onAlarmListItemClick(id)}
-              active={id === selectedAlarm}
-              toggleAlarm={() => toggleAlarm(id)}
-              toggleDay={index => toggleDay(id, index)}
-              collapsed={Boolean(selectedAlarm)}
-            />
-          ))}
+          <span style={{ overflowY: "auto", height: "calc(100% - 60px)" }}>
+            {alarms.map(({ name, isOn, days, time, id }) => (
+              <AlarmListItem
+                key={id}
+                id={id}
+                name={name}
+                isOn={isOn}
+                days={days}
+                time={time}
+                onClick={() => onAlarmListItemClick(id)}
+                active={id === selectedAlarm}
+                toggleAlarm={() => toggleAlarm(id)}
+                toggleDay={index => toggleDay(id, index)}
+                collapsed={Boolean(selectedAlarm)}
+              />
+            ))}
+          </span>
         </AlarmList>
         {selectedAlarm && (
-          <List className="alarm-settings-lv1">
-            <div className="list-item header">{selectedAlarmObj.name}</div>
+          <List className="alarm-settings">
             <div className="alarm-settings-main">
               <div className="alarm-settings-left">
+                <div className="list-item header">{selectedAlarmObj.name}</div>
                 {subMenus2.map(menu => (
                   <ListItem
                     key={menu.title}
