@@ -30,6 +30,13 @@ class Alarms extends Component {
 
   onSubMenu2Click = menu => this.setState({ selectedSubMenu2: menu });
 
+  onSidebarClick = menu => {
+    this.setState({ selectedSubMenu1: menu.title });
+    if (this.state.selectedAlarm) {
+      this.setState({ selectedAlarm: null });
+    }
+  };
+
   render() {
     const { alarms } = this.props;
     const { selectedSubMenu1, selectedSubMenu2, selectedAlarm } = this.state;
@@ -62,7 +69,7 @@ class Alarms extends Component {
                 className={`alarm-menu-mode ${
                   selectedSubMenu1 === menu.title ? "active" : ""
                 }`}
-                onClick={() => this.setState({ selectedSubMenu1: menu.title })}>
+                onClick={() => this.onSidebarClick(menu)}>
                 <img src={menu.img} />
               </div>
             ))}

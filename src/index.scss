@@ -44,6 +44,7 @@ body {
 
   .pagination-dots-container {
     position: fixed;
+    z-index: 99999999;
     top: calc(100vh - 28px - 9.6px);
   }
 }

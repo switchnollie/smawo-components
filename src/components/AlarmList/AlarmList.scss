@@ -6,7 +6,7 @@
   width: 100%;
   padding: 0;
   margin: 0;
-  transition: width 0.3s ease-out;
+  transition: width 0.2s ease-out;
   &.collapsed {
     width: calc(50% - 60px) !important;
   }
@@ -25,6 +25,9 @@
       justify-content: flex-start;
       color: $primaryTypo;
       font-size: 13px;
+      align-items: flex-end;
+      padding-bottom: 11px;
+      box-sizing: border-box;
 
       img {
         margin-left: 8px;

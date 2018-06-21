@@ -4,7 +4,7 @@
   width: 100%;
   padding: 0;
   margin: 0;
-  transition: width 0.3s ease-out; }
+  transition: width 0.2s ease-out; }
   .alarm-list.collapsed {
     width: calc(50% - 60px) !important; }
   .alarm-list .list-item {
@@ -19,7 +19,10 @@
     .alarm-list .list-item.new-alarm {
       justify-content: flex-start;
       color: #7e81a8;
-      font-size: 13px; }
+      font-size: 13px;
+      align-items: flex-end;
+      padding-bottom: 11px;
+      box-sizing: border-box; }
       .alarm-list .list-item.new-alarm img {
         margin-left: 8px; }
     .alarm-list .list-item .alarm-name {
