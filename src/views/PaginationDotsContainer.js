@@ -1,10 +1,29 @@
 import React, { Component } from "react";
-import PaginationDots from "./PaginationDots";
+import PaginationDots from "../components/PaginationDots/PaginationDots";
 import { withRouter } from "react-router-dom";
+
+const mapHistoryToStep = history => {
+  console.log(history.location.pathname);
+  let step;
+  switch (history.location.pathname) {
+    case "/alarms":
+      step = 1;
+      break;
+    case "/feed":
+      step = 2;
+      break;
+    case "/settings":
+      step = 3;
+      break;
+    default:
+      step = 2;
+  }
+  return step;
+};
 
 class PaginationDotsContainer extends Component {
   state = {
-    selectedStep: 2,
+    selectedStep: mapHistoryToStep(this.props.history),
     numberOfSteps: 3
   };
 

@@ -1,5 +1,11 @@
 @import "./colors.scss";
 
+html {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +16,6 @@ body {
   height: 100vh;
   width: 100vw;
   color: $primaryTypo;
-  overflow: hidden;
 
   &:before {
     content: "";
@@ -35,4 +40,19 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  .pagination-dots-container {
+    position: fixed;
+    top: calc(100vh - 28px - 9.6px);
+  }
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
 }

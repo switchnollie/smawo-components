@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import CloudyIcon from "./assets/cloudyIcon.svg";
-import CakeIcon from "./assets/cakeIcon.svg";
-import TodayIcon from "./assets/todayIcon.svg";
+import CloudyIcon from "../assets/cloudyIcon.svg";
+import CakeIcon from "../assets/cakeIcon.svg";
+import TodayIcon from "../assets/todayIcon.svg";
 import "./Feed.css";
 
 export default class Feed extends Component {
