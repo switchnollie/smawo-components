@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PlusIcon from "../assets/plusIcon.svg";
 import AlarmListItem from "../components/AlarmList/AlarmListItem";
 import AlarmList from "../components/AlarmList/AlarmList";
@@ -38,7 +38,7 @@ export default class MyAlarms extends Component {
         <AlarmList collapsed={Boolean(selectedAlarm)}>
           <li className="list-item new-alarm">
             <span>Wecker hinzufügen</span>
-            <img src={PlusIcon} />
+            <img alt="plus-icon" src={PlusIcon} />
           </li>
           <span style={{ overflowY: "auto", height: "calc(100% - 60px)" }}>
             {alarms.map(({ name, isOn, days, time, id }) => (

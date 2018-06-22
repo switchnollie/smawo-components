@@ -3,7 +3,6 @@ import PaginationDots from "../components/PaginationDots/PaginationDots";
 import { withRouter } from "react-router-dom";
 
 const mapHistoryToStep = history => {
-  console.log(history.location.pathname);
   let step;
   switch (history.location.pathname) {
     case "/alarms":
@@ -29,7 +28,6 @@ class PaginationDotsContainer extends Component {
 
   onDotClick = dotIndex => {
     const { history } = this.props;
-    const { selectedStep } = this.state;
     switch (dotIndex) {
       case 1:
         history.push("alarms");

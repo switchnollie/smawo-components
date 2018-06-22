@@ -7,6 +7,7 @@ import AlarmIcon from "../assets/alarm.svg";
 import FamilyIcon from "../assets/group.svg";
 import MyAlarms from "./MyAlarms";
 import Background from "../assets/BackgroundBottom.png";
+import SettingModal from "./SettingModal";
 
 export const subMenus1 = [
   { title: "Deine Wecker", img: AlarmIcon },
@@ -24,12 +25,36 @@ class Alarms extends Component {
   state = {
     selectedAlarm: null,
     selectedSubMenu1: "Deine Wecker",
-    selectedSubMenu2: null
+    selectedSubMenu2: null,
+    modalIsOpen: false
+  };
+
+  openModal = () => {
+    this.setState({ modalIsOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false, selectedSubMenu2: null });
   };
 
   onAlarmListItemClick = value => this.setState({ selectedAlarm: value });
 
-  onSubMenu2Click = menu => this.setState({ selectedSubMenu2: menu });
+  onSubMenu2Click = menu => {
+    this.setState({ selectedSubMenu2: menu });
+    switch (menu) {
+      case "Zeit":
+        this.openModal();
+        break;
+      case "Schlummern":
+        this.openModal();
+        break;
+      case "Name":
+        this.openModal();
+        break;
+      default:
+        break;
+    }
+  };
 
   onSidebarClick = menu => {
     this.setState({ selectedSubMenu1: menu.title });
@@ -40,7 +65,12 @@ class Alarms extends Component {
 
   render() {
     const { alarms } = this.props;
-    const { selectedSubMenu1, selectedSubMenu2, selectedAlarm } = this.state;
+    const {
+      selectedSubMenu1,
+      selectedSubMenu2,
+      selectedAlarm,
+      modalIsOpen
+    } = this.state;
 
     let renderedSubMenu1 = null;
 
@@ -60,6 +90,8 @@ class Alarms extends Component {
       renderedSubMenu1 = null;
     }
 
+    const selectedAlarmObj = alarms.find(alarm => alarm.id === selectedAlarm);
+
     return (
       <div className="alarms-wrapper">
         <div className="alarms-header">{selectedSubMenu1}</div>
@@ -70,15 +102,22 @@ class Alarms extends Component {
                 className={`alarm-menu-mode ${
                   selectedSubMenu1 === menu.title ? "active" : ""
                 }`}
+                key={menu.title}
                 onClick={() => this.onSidebarClick(menu)}>
-                <img src={menu.img} />
+                <img alt="sidebar-menu-img" src={menu.img} />
               </div>
             ))}
           </div>
-          {/* TODO: Seperate ownAlarms view and familyAlarms view from this component */}
           {renderedSubMenu1}
-          <img id="overlay-bottom" src={Background} />
+          <img alt="overlay-bottom" id="overlay-bottom" src={Background} />
         </div>
+        <SettingModal
+          isOpen={modalIsOpen}
+          closeModal={this.closeModal}
+          selectedSubMenu2={selectedSubMenu2}
+          currentTime={selectedAlarmObj && selectedAlarmObj.time}
+          snoozeTime={selectedAlarmObj && selectedAlarmObj.snoozeTime}
+        />
       </div>
     );
   }

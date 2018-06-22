@@ -41,21 +41,21 @@ export default class Feed extends Component {
         </div>
         <ul className="widgets">
           <li className="widget">
-            <img className="widget-logo" src={CloudyIcon} />
+            <img alt="cloud-icon" className="widget-logo" src={CloudyIcon} />
             <span className="widget-text">
               <span>26°C, sonnig</span>
               <span>Schwäbisch Gmünd</span>
             </span>
           </li>
           <li className="widget">
-            <img className="widget-logo" src={CakeIcon} />
+            <img alt="cake-icon" className="widget-logo" src={CakeIcon} />
             <span className="widget-text">
               <span>Semesterausstellung</span>
               <span>Ganztägig</span>
             </span>
           </li>
           <li className="widget">
-            <img className="widget-logo" src={TodayIcon} />
+            <img alt="today-icon" className="widget-logo" src={TodayIcon} />
             <span className="widget-text">
               <span>Jane Doe</span>
               <span>23. Geburtstag</span>

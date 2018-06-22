@@ -7,7 +7,8 @@ const initialState = {
         name: "Universität",
         time: "08:15",
         days: [false, false, true, true, false, false, false],
-        scene: "Ocean Breeze"
+        scene: "Ocean Breeze",
+        snoozeTime: "07:00"
       },
       universitaet1: {
         id: "universitaet1",
@@ -15,7 +16,8 @@ const initialState = {
         name: "Universität",
         time: "09:45",
         days: [true, false, false, false, true, false, false],
-        scene: "Calm Start"
+        scene: "Calm Start",
+        snoozeTime: "09:00"
       },
       arbeit0: {
         id: "arbeit0",
@@ -23,7 +25,8 @@ const initialState = {
         name: "Arbeit",
         time: "06:30",
         days: [false, true, false, false, false, false, false],
-        scene: "Energy Boost"
+        scene: "Energy Boost",
+        snoozeTime: "05:30"
       },
       ferien0: {
         id: "ferien0",
@@ -31,7 +34,8 @@ const initialState = {
         name: "Ferien",
         time: "10:00",
         days: [true, true, true, true, true, true, true],
-        scene: "Calm Start"
+        scene: "Calm Start",
+        snoozeTime: "10:00"
       },
       traning0: {
         id: "traning0",
@@ -39,7 +43,8 @@ const initialState = {
         name: "Traning",
         time: "18:00",
         days: [true, true, true, true, true, false, false],
-        scene: "Energy Boost"
+        scene: "Energy Boost",
+        snoozeTime: "02:00"
       }
     },
     allIds: ["universitaet0", "universitaet1", "arbeit0", "ferien0", "traning0"]
