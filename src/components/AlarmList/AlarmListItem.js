@@ -19,12 +19,14 @@ const AlarmListItem = ({
   <li
     className={`list-item ${active ? "active" : ""}`}
     onClick={() => onClick()}>
-    <span className="alarm-name">{name}</span>
-    <Toggle
-      onChange={() => toggleAlarm(id)}
-      isSelected={active}
-      checked={isOn}
-    />
+    <span>
+      <span className="alarm-name">{name}</span>
+      <Toggle
+        onChange={() => toggleAlarm(id)}
+        isSelected={active}
+        checked={isOn}
+      />
+    </span>
     {!collapsed && (
       <Fragment>
         <span className="alarm-time">{time}</span>

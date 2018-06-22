@@ -3,7 +3,11 @@ import "./List.css";
 
 export default class List extends Component {
   render() {
-    const { children, className } = this.props;
-    return <ul className={`list ${className ? className : ""}`}>{children}</ul>;
+    const { children, className, ...others } = this.props;
+    return (
+      <ul className={`list ${className ? className : ""}`} {...others}>
+        {children}
+      </ul>
+    );
   }
 }

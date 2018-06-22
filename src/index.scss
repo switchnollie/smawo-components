@@ -61,3 +61,19 @@ body {
   opacity: 1;
   transition: opacity 250ms ease-in;
 }
+
+.save-button {
+  outline: none;
+  background-color: $accentBlue;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  width: 110px;
+  height: 32px;
+  border-radius: 2px;
+  font-size: 18px;
+  margin: 22px 16px 0 16px;
+
+  &:active {
+    background-color: darken($accentBlue, 10%);
+  }
+}
