@@ -10,6 +10,7 @@
   .alarm-list.collapsed {
     width: calc(50% - 30px) !important; }
   .alarm-list .list-item {
+    white-space: nowrap;
     cursor: pointer;
     display: flex;
     position: relative;
