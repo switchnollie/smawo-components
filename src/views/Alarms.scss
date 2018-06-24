@@ -185,13 +185,13 @@
 
           .vertical-day-picker-container {
             position: relative;
-            height: calc(100% - 220px);
+            height: calc(100% - 200px);
             overflow-x: hidden;
             overflow-y: auto;
             margin-bottom: 19px;
             padding: 19px 0;
             .day-dot-row {
-              margin-bottom: 17px;
+              margin-bottom: 14px;
             }
           }
         }
@@ -209,6 +209,16 @@
       .alarm-settings-right {
         width: 43% !important;
       }
+    }
+
+    .family-members-container {
+      padding: 14px;
+      box-sizing: border-box;
+      width: calc(100% - 60px);
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
   }
 }

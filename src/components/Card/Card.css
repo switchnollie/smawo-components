@@ -1,0 +1,30 @@
+.card {
+  cursor: pointer;
+  width: 175px;
+  height: 98px;
+  border: 2px solid #454573;
+  border-radius: 3px;
+  background-color: #2e2e57;
+  box-shadow: 0px 5px 5px 0px rgba(21, 23, 46, 0.4);
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px;
+  box-sizing: border-box; }
+  .card .card-headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .card .card-headline svg {
+      height: 18px; }
+      .card .card-headline svg path {
+        fill: #fff; }
+  .card .card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .card .card-body span:first-child {
+      color: #696c8c;
+      font-size: 13px; }

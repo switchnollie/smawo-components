@@ -7,6 +7,7 @@ import {
   toggleDay,
   changeAlarmName
 } from "../actions/alarmActions";
+import FamilyMembers from "./FamilyMembers";
 import AlarmIcon from "../assets/alarm.svg";
 import FamilyIcon from "../assets/group.svg";
 import MyAlarms from "./MyAlarms";
@@ -91,7 +92,7 @@ class Alarms extends Component {
         />
       );
     } else if (selectedSubMenu1 === "Familienwecker") {
-      renderedSubMenu1 = null;
+      renderedSubMenu1 = <FamilyMembers />;
     }
 
     const selectedAlarmObj = alarms.find(alarm => alarm.id === selectedAlarm);

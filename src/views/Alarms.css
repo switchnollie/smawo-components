@@ -124,13 +124,13 @@
               color: #fff; }
           .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main .alarm-settings-right .vertical-day-picker-container {
             position: relative;
-            height: calc(100% - 220px);
+            height: calc(100% - 200px);
             overflow-x: hidden;
             overflow-y: auto;
             margin-bottom: 19px;
             padding: 19px 0; }
             .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main .alarm-settings-right .vertical-day-picker-container .day-dot-row {
-              margin-bottom: 17px; }
+              margin-bottom: 14px; }
     .alarms-wrapper .alarms-main .my-alarms-container {
       width: 100%;
       display: flex; }
@@ -138,3 +138,11 @@
         width: 57% !important; }
       .alarms-wrapper .alarms-main .my-alarms-container .alarm-settings-right {
         width: 43% !important; }
+    .alarms-wrapper .alarms-main .family-members-container {
+      padding: 14px;
+      box-sizing: border-box;
+      width: calc(100% - 60px);
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; }

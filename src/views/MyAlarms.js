@@ -22,6 +22,11 @@ const getDaysAsString = days => {
 };
 
 export default class MyAlarms extends Component {
+  handleDayClick = (id, index) => {
+    this.props.onSubMenu2Click("Wochentag");
+    this.props.toggleDay(id, index);
+  };
+
   render() {
     const {
       alarms,
@@ -53,7 +58,7 @@ export default class MyAlarms extends Component {
                 onClick={() => onAlarmListItemClick(id)}
                 active={id === selectedAlarm}
                 toggleAlarm={() => toggleAlarm(id)}
-                toggleDay={index => toggleDay(id, index)}
+                toggleDay={index => this.handleDayClick(id, index)}
                 collapsed={Boolean(selectedAlarm)}
               />
             ))}

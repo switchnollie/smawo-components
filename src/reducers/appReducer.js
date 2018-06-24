@@ -45,9 +45,95 @@ const initialState = {
         days: [true, true, true, true, true, false, false],
         scene: "Energy Boost",
         snoozeTime: "02:00"
+      },
+      lasse0: {
+        id: "lasse0",
+        isOn: true,
+        name: "Schule spät",
+        time: "09:45",
+        days: [false, true, true, false, true, false, false],
+        scene: "Energy Boost",
+        snoozeTime: "02:00",
+        isFamilyAlarm: true
+      },
+      lasse1: {
+        id: "lasse1",
+        isOn: true,
+        name: "Schule früh",
+        time: "06:30",
+        days: [true, false, false, true, false, false, false],
+        scene: "Energy Boost",
+        snoozeTime: "02:00",
+        isFamilyAlarm: true
+      },
+      jessper0: {
+        id: "jessper0",
+        isOn: true,
+        name: "Schule",
+        time: "06:30",
+        days: [true, false, false, true, false, false, false],
+        scene: "Energy Boost",
+        snoozeTime: "03:00",
+        isFamilyAlarm: true
+      },
+      jana0: {
+        id: "jana0",
+        isOn: true,
+        name: "Schule",
+        time: "07:00",
+        days: [true, true, true, true, true, false, false],
+        scene: "Energy Boost",
+        snoozeTime: "03:30",
+        isFamilyAlarm: true
+      },
+      ida0: {
+        id: "ida0",
+        isOn: true,
+        name: "Schule",
+        time: "07:00",
+        days: [true, true, true, true, true, false, false],
+        scene: "Energy Boost",
+        snoozeTime: "03:30",
+        isFamilyAlarm: true
       }
     },
-    allIds: ["universitaet0", "universitaet1", "arbeit0", "ferien0", "traning0"]
+    allIds: [
+      "universitaet0",
+      "universitaet1",
+      "arbeit0",
+      "ferien0",
+      "traning0",
+      "lasse0",
+      "lasse1",
+      "jessper0",
+      "jana0",
+      "ida0"
+    ]
+  },
+  persons: {
+    byId: {
+      lasse: {
+        id: "lasse",
+        name: "Lasse",
+        alarms: ["lasse0", "lasse1"]
+      },
+      jessper: {
+        id: "jessper",
+        name: "Jessper",
+        alarms: ["jessper0"]
+      },
+      jana: {
+        id: "jana",
+        name: "Jana",
+        alarms: ["jana0"]
+      },
+      ida: {
+        id: "ida",
+        name: "Ida",
+        alarms: ["ida0"]
+      }
+    },
+    allIds: ["lasse", "jessper", "jana", "ida"]
   }
 };
 
@@ -78,5 +164,15 @@ const appReducer = (state = initialState, action = {}) => {
 export default appReducer;
 
 export const selectAllAlarms = state =>
-  state.alarms.allIds.map(id => state.alarms.byId[id]);
+  state.alarms.allIds
+    .map(id => state.alarms.byId[id])
+    .filter(alarm => !alarm.isFamilyAlarm);
 export const selectAlarmById = (state, id) => state.alarms.byId[id];
+
+export const selectAllPersons = state =>
+  state.persons.allIds.map(id => {
+    const alarms = state.persons.byId[id].alarms.map(
+      alarmId => state.alarms.byId[alarmId]
+    );
+    return { ...state.persons.byId[id], alarms };
+  });
