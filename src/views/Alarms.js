@@ -112,7 +112,6 @@ class Alarms extends Component {
     }
 
     const selectedAlarmObj = alarms.find(alarm => alarm.id === selectedAlarm);
-    console.log(selectedAlarm);
 
     return (
       <div className="alarms-wrapper">

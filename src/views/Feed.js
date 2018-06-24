@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CloudyIcon from "../assets/cloudyIcon.svg";
 import CakeIcon from "../assets/cakeIcon.svg";
 import TodayIcon from "../assets/todayIcon.svg";
+import { Trail, animated } from "react-spring";
 import "./Feed.css";
 
 const getMonthName = date => {
@@ -24,7 +25,27 @@ export default class Feed extends Component {
     const date = new Date();
     this.state = {
       time: this.getTime(date),
-      date: this.getDateString(date)
+      date: this.getDateString(date),
+      widgets: [
+        {
+          id: "weather",
+          icon: CloudyIcon,
+          primary: "26°C, sonnig",
+          secondary: "Schwäbisch Gmünd"
+        },
+        {
+          id: "firstEvent",
+          icon: TodayIcon,
+          primary: "Semesterausstellung",
+          secondary: "Ganztägig"
+        },
+        {
+          id: "birthday",
+          icon: CakeIcon,
+          primary: "Jane Doe",
+          secondary: "23. Geburtstag"
+        }
+      ]
     };
   }
 
@@ -51,7 +72,7 @@ export default class Feed extends Component {
   };
 
   render() {
-    const { time, date } = this.state;
+    const { time, date, widgets } = this.state;
     return (
       <div className="feed-main">
         <div className="time-container">
@@ -61,27 +82,30 @@ export default class Feed extends Component {
           </div>
         </div>
         <ul className="widgets">
-          <li className="widget">
-            <img alt="cloud-icon" className="widget-logo" src={CloudyIcon} />
-            <span className="widget-text">
-              <span>26°C, sonnig</span>
-              <span>Schwäbisch Gmünd</span>
-            </span>
-          </li>
-          <li className="widget">
-            <img alt="cake-icon" className="widget-logo" src={CakeIcon} />
-            <span className="widget-text">
-              <span>Semesterausstellung</span>
-              <span>Ganztägig</span>
-            </span>
-          </li>
-          <li className="widget">
-            <img alt="today-icon" className="widget-logo" src={TodayIcon} />
-            <span className="widget-text">
-              <span>Jane Doe</span>
-              <span>23. Geburtstag</span>
-            </span>
-          </li>
+          <Trail
+            native
+            from={{ opacity: 0, x: -50 }}
+            to={{ opacity: 1, x: 0 }}
+            keys={widgets.map(widget => widget.id)}>
+            {widgets.map(widget => ({ x, opacity }) => (
+              <animated.li
+                className="widget"
+                style={{
+                  opacity,
+                  transform: x.interpolate(x => `translate3d(${x}%,0,0)`)
+                }}>
+                <img
+                  alt="cloud-icon"
+                  className="widget-logo"
+                  src={widget.icon}
+                />
+                <span className="widget-text">
+                  <span>{widget.primary}</span>
+                  <span>{widget.secondary}</span>
+                </span>
+              </animated.li>
+            ))}
+          </Trail>
         </ul>
       </div>
     );
