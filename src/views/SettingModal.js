@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Modal from "react-modal";
 import SelectWheel from "../assets/wheel.svg";
 
@@ -24,7 +24,19 @@ const customStylesModal = {
 
 export default class SettingModal extends Component {
   state = {
-    selectedTime: this.props.currentTime
+    selectedTime: this.props.currentTime,
+    textFieldValue: null
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log("Name für den Wecker: ", this.state.textFieldValue);
+    this.props.changeAlarmName(this.props.alarm.id, this.state.textFieldValue);
+    this.props.closeModal();
+  };
+
+  handleInputChange = e => {
+    this.setState({ textFieldValue: e.target.value });
   };
 
   render() {
@@ -43,37 +55,49 @@ export default class SettingModal extends Component {
         onRequestClose={closeModal}
         style={customStylesModal}
         contentLabel="Settings Modal">
-        <div className="modal-content">
+        <form onSubmit={this.handleSubmit} className="modal-content">
           <div className="modal-head-content">
             {(() => {
               switch (selectedSubMenu2) {
                 case "Zeit":
-                  return <h4>Weckzeit einstellen</h4>;
+                  return (
+                    <Fragment>
+                      <h4>Weckzeit einstellen</h4>
+                      <p>{`${currentTime} Uhr`}</p>
+                    </Fragment>
+                  );
                 case "Schlummern":
-                  return <h4>Schlummerdauer einstellen</h4>;
+                  return (
+                    <Fragment>
+                      <h4>Schlummerdauer einstellen</h4>
+                      <p>{`${snoozeTime}m`}</p>
+                    </Fragment>
+                  );
+                case "Name":
+                  return (
+                    <Fragment>
+                      <label>Name</label>
+                      <input type="text" onChange={this.handleInputChange} />
+                    </Fragment>
+                  );
                 default:
                   return null;
               }
             })()}
-            <p>
-              {selectedSubMenu2 === "Zeit"
-                ? `${currentTime} Uhr`
-                : `${snoozeTime}m`}
-            </p>
           </div>
-          {selectedSubMenu2 === "Name" && (
-            <input type="text" placeholder="Name" />
-          )}
           {(selectedSubMenu2 === "Zeit" ||
             selectedSubMenu2 === "Schlummern") && (
             <div className="selection-wheel-container">
               <img alt="wheel-input" src={SelectWheel} />
             </div>
           )}
-          <button className="save-button" type="button" onClick={closeModal}>
+          <button
+            value={this.state.textFieldValue}
+            className="save-button"
+            type="submit">
             Speichern
           </button>
-        </div>
+        </form>
       </Modal>
     );
   }

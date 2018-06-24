@@ -12,30 +12,51 @@ const getMonthName = date => {
 };
 
 const getDayName = date => {
-  const dayNames = "Montag Dienstag Mittwoch Donnerstag Freitag Samstag Sonntag".split(
+  const dayNames = "Sonntag Montag Dienstag Mittwoch Donnerstag Freitag Samstag".split(
     " "
   );
-  return dayNames[date.getDay() - 1];
+  return dayNames[date.getDay()];
 };
 
-let dateObj = new Date();
-
-let time = dateObj.toLocaleTimeString([], {
-  hour: "2-digit",
-  minute: "2-digit"
-});
-
-let date = `${getDayName(dateObj)}, ${dateObj.getDate()}.${getMonthName(
-  dateObj
-)}`;
-
 export default class Feed extends Component {
+  constructor(props) {
+    super(props);
+    const date = new Date();
+    this.state = {
+      time: this.getTime(date),
+      date: this.getDateString(date)
+    };
+  }
+
+  getTime = date =>
+    date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+  componentDidMount() {
+    this.intervalID = setInterval(() => this.tick(), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
+  }
+
+  getDateString = date =>
+    `${getDayName(date)}, ${date.getDate()}.${getMonthName(date)}`;
+
+  tick = () => {
+    this.setState({
+      time: this.getTime(new Date())
+    });
+  };
+
   render() {
+    const { time, date } = this.state;
     return (
       <div className="feed-main">
         <div className="time-container">
           <div className="time">
-            <span>{time.substring()}</span>
+            <span>{time}</span>
             <span>{date}</span>
           </div>
         </div>

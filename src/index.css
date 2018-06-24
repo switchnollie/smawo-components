@@ -66,14 +66,17 @@ body {
   height: 100%;
   padding: 20px;
   overflow: hidden; }
-  .modal-content .modal-head-content h4 {
-    font-size: 13px;
-    font-weight: 300;
-    margin: 0; }
-  .modal-content .modal-head-content p {
-    margin: 0;
-    color: #fff;
-    font-size: 36px; }
+  .modal-content .modal-head-content {
+    width: 100%;
+    position: relative; }
+    .modal-content .modal-head-content h4 {
+      font-size: 13px;
+      font-weight: 300;
+      margin: 0; }
+    .modal-content .modal-head-content p {
+      margin: 0;
+      color: #fff;
+      font-size: 36px; }
   .modal-content button {
     align-self: center;
     z-index: 2;
@@ -107,3 +110,19 @@ body {
     width: 100%;
     box-shadow: 1px -12px 3px 0px #2e2e57f0;
     background-color: #2e2e57; }
+
+input[type="text"] {
+  width: 100%;
+  padding: 6px 0 7px;
+  border-width: 0 0 1px 0;
+  border-color: #696c8c;
+  color: #fff;
+  background-color: transparent;
+  outline: none;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1); }
+
+label {
+  color: #696c8c;
+  font-size: 13px;
+  visibility: visible !important; }

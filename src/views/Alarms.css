@@ -122,6 +122,15 @@
             .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main .alarm-settings-right .alarm-settings-item span:nth-child(2) {
               font-size: 16px;
               color: #fff; }
+          .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main .alarm-settings-right .vertical-day-picker-container {
+            position: relative;
+            height: calc(100% - 220px);
+            overflow-x: hidden;
+            overflow-y: auto;
+            margin-bottom: 19px;
+            padding: 19px 0; }
+            .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main .alarm-settings-right .vertical-day-picker-container .day-dot-row {
+              margin-bottom: 17px; }
     .alarms-wrapper .alarms-main .my-alarms-container {
       width: 100%;
       display: flex; }

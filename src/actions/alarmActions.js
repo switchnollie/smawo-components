@@ -8,3 +8,9 @@ export const toggleDay = (id, index) => ({
   id,
   index
 });
+
+export const changeAlarmName = (id, name) => ({
+  type: "CHANGE_ALARM_NAME",
+  id,
+  name
+});

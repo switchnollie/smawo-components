@@ -182,6 +182,18 @@
               color: $accentTypo1;
             }
           }
+
+          .vertical-day-picker-container {
+            position: relative;
+            height: calc(100% - 220px);
+            overflow-x: hidden;
+            overflow-y: auto;
+            margin-bottom: 19px;
+            padding: 19px 0;
+            .day-dot-row {
+              margin-bottom: 17px;
+            }
+          }
         }
       }
     }

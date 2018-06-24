@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PlusIcon from "../assets/plusIcon.svg";
 import AlarmListItem from "../components/AlarmList/AlarmListItem";
 import AlarmList from "../components/AlarmList/AlarmList";
@@ -6,9 +6,10 @@ import List from "../components/List/List";
 import ListItem from "../components/List/ListItem";
 import { subMenus2 } from "./Alarms";
 import { Transition, animated } from "react-spring";
+import DayPicker from "../components/DayPicker/DayPicker";
 
 const defaultStyles = {
-  width: "calc(50% + 30px)"
+  width: "calc(58% + 30px)"
 };
 
 const getDaysAsString = days => {
@@ -89,20 +90,34 @@ export default class MyAlarms extends Component {
                             onClick={() => {}}>
                             Speichern
                           </button>
-                          <div className="alarm-settings-item">
-                            <span>Weckzeit</span>
-                            <span>{selectedAlarmObj.time}</span>
-                          </div>
-                          <div className="alarm-settings-item">
-                            <span>Szene</span>
-                            <span>{selectedAlarmObj.scene}</span>
-                          </div>
-                          <div className="alarm-settings-item">
-                            <span>Aktive Tage</span>
-                            <span>
-                              {getDaysAsString(selectedAlarmObj.days)}
-                            </span>
-                          </div>
+                          {selectedSubMenu2 !== "Wochentag" ? (
+                            <Fragment>
+                              <div className="alarm-settings-item">
+                                <span>Weckzeit</span>
+                                <span>{selectedAlarmObj.time}</span>
+                              </div>
+                              <div className="alarm-settings-item">
+                                <span>Szene</span>
+                                <span>{selectedAlarmObj.scene}</span>
+                              </div>
+                              <div className="alarm-settings-item">
+                                <span>Aktive Tage</span>
+                                <span>
+                                  {getDaysAsString(selectedAlarmObj.days)}
+                                </span>
+                              </div>
+                            </Fragment>
+                          ) : (
+                            <div className="vertical-day-picker-container">
+                              <DayPicker
+                                vertical={1}
+                                days={selectedAlarmObj.days}
+                                onClick={index =>
+                                  toggleDay(selectedAlarmObj.id, index)
+                                }
+                              />
+                            </div>
+                          )}
                         </div>
                       </div>
                     </List>

@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column; }
   .alarm-list.collapsed {
-    width: calc(50% - 30px) !important; }
+    width: calc(42% - 30px) !important; }
   .alarm-list .list-item {
     white-space: nowrap;
     cursor: pointer;
@@ -32,7 +32,7 @@
         margin-left: 8px; }
     .alarm-list .list-item .alarm-name {
       display: inline-block;
-      width: 150px; }
+      width: 130px; }
     .alarm-list .list-item .alarm-time {
       color: #7e81a8; }
     .alarm-list .list-item path {

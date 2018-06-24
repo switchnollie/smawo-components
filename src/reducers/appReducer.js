@@ -54,18 +54,22 @@ const initialState = {
 const appReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case "TOGGLE_ALARM": {
-      const newState = Object.assign(state, {});
+      const newState = Object.assign({}, state);
       const currentIsOn = newState.alarms.byId[action.id].isOn;
       newState.alarms.byId[action.id].isOn = !currentIsOn;
       return newState;
     }
     case "TOGGLE_DAY": {
-      const newState = Object.assign(state, {});
-      const currentDays = newState.alarms.byId[action.id].days;
+      const newState = Object.assign({}, state);
+      const currentDays = state.alarms.byId[action.id].days;
       currentDays[action.index] = !currentDays[action.index];
       newState.alarms.byId[action.id].days = currentDays;
       return newState;
     }
+    case "CHANGE_ALARM_NAME":
+      const newState = Object.assign({}, state);
+      newState.alarms.byId[action.id].name = action.name;
+      return newState;
     default:
       return state;
   }

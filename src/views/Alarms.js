@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import "./Alarms.css";
 import { connect } from "react-redux";
 import { selectAllAlarms } from "../reducers/appReducer";
-import { toggleAlarm, toggleDay } from "../actions/alarmActions";
+import {
+  toggleAlarm,
+  toggleDay,
+  changeAlarmName
+} from "../actions/alarmActions";
 import AlarmIcon from "../assets/alarm.svg";
 import FamilyIcon from "../assets/group.svg";
 import MyAlarms from "./MyAlarms";
@@ -112,11 +116,13 @@ class Alarms extends Component {
           <img alt="overlay-bottom" id="overlay-bottom" src={Background} />
         </div>
         <SettingModal
+          alarm={selectedAlarmObj}
           isOpen={modalIsOpen}
           closeModal={this.closeModal}
           selectedSubMenu2={selectedSubMenu2}
           currentTime={selectedAlarmObj && selectedAlarmObj.time}
           snoozeTime={selectedAlarmObj && selectedAlarmObj.snoozeTime}
+          changeAlarmName={this.props.changeAlarmName}
         />
       </div>
     );
@@ -127,6 +133,7 @@ export default (Alarms = connect(
   state => ({ alarms: selectAllAlarms(state) }),
   dispatch => ({
     toggleAlarm: id => dispatch(toggleAlarm(id)),
-    toggleDay: (id, index) => dispatch(toggleDay(id, index))
+    toggleDay: (id, index) => dispatch(toggleDay(id, index)),
+    changeAlarmName: (id, name) => dispatch(changeAlarmName(id, name))
   })
 )(Alarms));
