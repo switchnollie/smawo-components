@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Card.css";
 
-const Card = ({ name, nextAlarm }) => {
+const Card = ({ name, nextAlarm, onClick }) => {
   return (
-    <div className="card">
+    <div className="card" onClick={onClick}>
       <div className="card-headline">
         <span>{name}</span>
         <svg
@@ -30,7 +30,7 @@ const Card = ({ name, nextAlarm }) => {
 
 Card.propTypes = {
   name: PropTypes.string.isRequired,
-  nextAlarm: PropTypes.string.isRequired
+  nextAlarm: PropTypes.object.isRequired
 };
 
 export default Card;

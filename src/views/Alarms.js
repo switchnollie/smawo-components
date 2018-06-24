@@ -10,7 +10,7 @@ import {
 import FamilyMembers from "./FamilyMembers";
 import AlarmIcon from "../assets/alarm.svg";
 import FamilyIcon from "../assets/group.svg";
-import MyAlarms from "./MyAlarms";
+import AlarmsEditor from "./AlarmsEditor";
 import Background from "../assets/BackgroundBottom.png";
 import SettingModal from "./SettingModal";
 
@@ -31,8 +31,11 @@ class Alarms extends Component {
     selectedAlarm: null,
     selectedSubMenu1: "Deine Wecker",
     selectedSubMenu2: null,
-    modalIsOpen: false
+    modalIsOpen: false,
+    selectedPerson: null
   };
+
+  changeSelectedPerson = name => this.setState({ selectedPerson: name });
 
   openModal = () => {
     this.setState({ modalIsOpen: true });
@@ -74,15 +77,16 @@ class Alarms extends Component {
       selectedSubMenu1,
       selectedSubMenu2,
       selectedAlarm,
-      modalIsOpen
+      modalIsOpen,
+      selectedPerson
     } = this.state;
 
     let renderedSubMenu1 = null;
 
     if (selectedSubMenu1 === "Deine Wecker") {
       renderedSubMenu1 = (
-        <MyAlarms
-          alarms={alarms}
+        <AlarmsEditor
+          alarms={alarms.filter(alarm => !alarm.isFamilyAlarm)}
           selectedAlarm={selectedAlarm}
           toggleAlarm={this.props.toggleAlarm}
           toggleDay={this.props.toggleDay}
@@ -92,14 +96,31 @@ class Alarms extends Component {
         />
       );
     } else if (selectedSubMenu1 === "Familienwecker") {
-      renderedSubMenu1 = <FamilyMembers />;
+      renderedSubMenu1 = (
+        <FamilyMembers
+          selectedAlarm={selectedAlarm}
+          toggleAlarm={this.props.toggleAlarm}
+          toggleDay={this.props.toggleDay}
+          onAlarmListItemClick={this.onAlarmListItemClick}
+          selectedSubMenu2={selectedSubMenu2}
+          onSubMenu2Click={this.onSubMenu2Click}
+          openModal={this.openModal}
+          changeSelectedPerson={this.changeSelectedPerson}
+          selectedPerson={selectedPerson}
+        />
+      );
     }
 
     const selectedAlarmObj = alarms.find(alarm => alarm.id === selectedAlarm);
+    console.log(selectedAlarm);
 
     return (
       <div className="alarms-wrapper">
-        <div className="alarms-header">{selectedSubMenu1}</div>
+        <div className="alarms-header">
+          {selectedSubMenu1 === "Deine Wecker"
+            ? selectedSubMenu1
+            : `${selectedPerson}s Wecker`}
+        </div>
         <div className="alarms-main">
           <div className="alarms-side-panel">
             {subMenus1.map(menu => (

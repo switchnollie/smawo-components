@@ -163,12 +163,13 @@ const appReducer = (state = initialState, action = {}) => {
 
 export default appReducer;
 
-export const selectAllAlarms = state =>
+export const selectAllOwnAlarms = state =>
   state.alarms.allIds
     .map(id => state.alarms.byId[id])
     .filter(alarm => !alarm.isFamilyAlarm);
 export const selectAlarmById = (state, id) => state.alarms.byId[id];
-
+export const selectAllAlarms = state =>
+  state.alarms.allIds.map(id => state.alarms.byId[id]);
 export const selectAllPersons = state =>
   state.persons.allIds.map(id => {
     const alarms = state.persons.byId[id].alarms.map(

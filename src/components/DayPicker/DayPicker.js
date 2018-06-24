@@ -29,11 +29,10 @@ const DayPicker = props => {
               {DAYS[index]}
             </span>
           ) : (
-            <span className="day-dot-row">
+            <span className="day-dot-row" key={index}>
               <span
                 className={`day-dot ${day ? "active" : ""}`}
-                onClick={() => onClick(index)}
-                key={index}>
+                onClick={() => onClick(index)}>
                 {DAYS[index]}
               </span>
               <span style={day ? { color: "#fff" } : null}>

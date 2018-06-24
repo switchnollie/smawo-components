@@ -21,7 +21,7 @@ const getDaysAsString = days => {
     .slice(0, -2);
 };
 
-export default class MyAlarms extends Component {
+export default class AlarmsEditor extends Component {
   handleDayClick = (id, index) => {
     this.props.onSubMenu2Click("Wochentag");
     this.props.toggleDay(id, index);
@@ -37,8 +37,9 @@ export default class MyAlarms extends Component {
       selectedSubMenu2,
       onSubMenu2Click
     } = this.props;
-
-    const selectedAlarmObj = alarms.find(alarm => alarm.id === selectedAlarm);
+    const selectedAlarmObj = alarms
+      ? alarms.find(alarm => alarm.id === selectedAlarm)
+      : {};
     return (
       <span className="my-alarms-container">
         <AlarmList collapsed={Boolean(selectedAlarm)}>
@@ -47,21 +48,22 @@ export default class MyAlarms extends Component {
             <img alt="plus-icon" src={PlusIcon} />
           </li>
           <span style={{ overflowY: "auto", height: "calc(100% - 60px)" }}>
-            {alarms.map(({ name, isOn, days, time, id }) => (
-              <AlarmListItem
-                key={id}
-                id={id}
-                name={name}
-                isOn={isOn}
-                days={days}
-                time={time}
-                onClick={() => onAlarmListItemClick(id)}
-                active={id === selectedAlarm}
-                toggleAlarm={() => toggleAlarm(id)}
-                toggleDay={index => this.handleDayClick(id, index)}
-                collapsed={Boolean(selectedAlarm)}
-              />
-            ))}
+            {alarms &&
+              alarms.map(({ name, isOn, days, time, id }) => (
+                <AlarmListItem
+                  key={id}
+                  id={id}
+                  name={name}
+                  isOn={isOn}
+                  days={days}
+                  time={time}
+                  onClick={() => onAlarmListItemClick(id)}
+                  active={id === selectedAlarm}
+                  toggleAlarm={() => toggleAlarm(id)}
+                  toggleDay={index => this.handleDayClick(id, index)}
+                  collapsed={Boolean(selectedAlarm)}
+                />
+              ))}
           </span>
         </AlarmList>
         <Transition
