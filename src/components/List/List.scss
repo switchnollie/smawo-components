@@ -16,6 +16,7 @@
     justify-content: space-between;
     align-items: center;
     color: #fff;
+    transition: background-color 0.2s ease-out;
 
     path {
       fill: #fff;
@@ -37,17 +38,6 @@
       );
     }
 
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 100%;
-      background-color: $accentBlue;
-      transition: width 150ms ease-out;
-    }
-
     &:not(:first-child) {
       &:before {
         top: -1px !important;
@@ -56,10 +46,7 @@
     }
 
     &.active {
-      &:before {
-        width: 100%;
-        z-index: -1;
-      }
+      background-color: $accentBlue;
     }
   }
 }

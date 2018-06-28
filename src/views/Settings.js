@@ -21,7 +21,7 @@ export default class Settings extends Component {
           <div
             key={index}
             style={{
-              background: "rgba(255,0,0,0.1)",
+              background: "transparent",
               position: "absolute",
               left: hotspot.x,
               top: hotspot.y,
