@@ -37,6 +37,8 @@
       height: 42px;
       width: 100%;
       margin: 19px 0; }
+      .feed-main .widgets .widget:first-child .widget-logo {
+        margin-right: 14px; }
       .feed-main .widgets .widget * {
         display: inline-flex;
         flex-direction: column;

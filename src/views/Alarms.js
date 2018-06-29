@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Alarms.css";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { selectAllAlarms } from "../reducers/appReducer";
 import {
   toggleAlarm,
@@ -13,6 +14,7 @@ import FamilyIcon from "../assets/group.svg";
 import AlarmsEditor from "./AlarmsEditor";
 import Background from "../assets/BackgroundBottom.png";
 import SettingModal from "./SettingModal";
+import Hammer from "react-hammerjs";
 
 export const subMenus1 = [
   { title: "Deine Wecker", img: AlarmIcon },
@@ -71,6 +73,13 @@ class Alarms extends Component {
     }
   };
 
+  scrollBack = direction => {
+    if (direction === 2) {
+      this.props.scrollBack();
+      this.props.history.push("feed");
+    }
+  };
+
   render() {
     const { alarms } = this.props;
     const {
@@ -114,47 +123,51 @@ class Alarms extends Component {
     const selectedAlarmObj = alarms.find(alarm => alarm.id === selectedAlarm);
 
     return (
-      <div className="alarms-wrapper">
-        <div className="alarms-header">
-          {selectedSubMenu1 === "Deine Wecker"
-            ? selectedSubMenu1
-            : `${selectedPerson}s Wecker`}
-        </div>
-        <div className="alarms-main">
-          <div className="alarms-side-panel">
-            {subMenus1.map(menu => (
-              <div
-                className={`alarm-menu-mode ${
-                  selectedSubMenu1 === menu.title ? "active" : ""
-                }`}
-                key={menu.title}
-                onClick={() => this.onSidebarClick(menu)}>
-                <img alt="sidebar-menu-img" src={menu.img} />
-              </div>
-            ))}
+      <Hammer onSwipe={({ direction }) => this.scrollBack(direction)}>
+        <div className="alarms-wrapper">
+          <div className="alarms-header">
+            {selectedSubMenu1 === "Deine Wecker"
+              ? selectedSubMenu1
+              : `${selectedPerson}s Wecker`}
           </div>
-          {renderedSubMenu1}
-          <img alt="overlay-bottom" id="overlay-bottom" src={Background} />
+          <div className="alarms-main">
+            <div className="alarms-side-panel">
+              {subMenus1.map(menu => (
+                <div
+                  className={`alarm-menu-mode ${
+                    selectedSubMenu1 === menu.title ? "active" : ""
+                  }`}
+                  key={menu.title}
+                  onClick={() => this.onSidebarClick(menu)}>
+                  <img alt="sidebar-menu-img" src={menu.img} />
+                </div>
+              ))}
+            </div>
+            {renderedSubMenu1}
+            <img alt="overlay-bottom" id="overlay-bottom" src={Background} />
+          </div>
+          <SettingModal
+            alarm={selectedAlarmObj}
+            isOpen={modalIsOpen}
+            closeModal={this.closeModal}
+            selectedSubMenu2={selectedSubMenu2}
+            currentTime={selectedAlarmObj && selectedAlarmObj.time}
+            snoozeTime={selectedAlarmObj && selectedAlarmObj.snoozeTime}
+            changeAlarmName={this.props.changeAlarmName}
+          />
         </div>
-        <SettingModal
-          alarm={selectedAlarmObj}
-          isOpen={modalIsOpen}
-          closeModal={this.closeModal}
-          selectedSubMenu2={selectedSubMenu2}
-          currentTime={selectedAlarmObj && selectedAlarmObj.time}
-          snoozeTime={selectedAlarmObj && selectedAlarmObj.snoozeTime}
-          changeAlarmName={this.props.changeAlarmName}
-        />
-      </div>
+      </Hammer>
     );
   }
 }
 
-export default (Alarms = connect(
-  state => ({ alarms: selectAllAlarms(state) }),
-  dispatch => ({
-    toggleAlarm: id => dispatch(toggleAlarm(id)),
-    toggleDay: (id, index) => dispatch(toggleDay(id, index)),
-    changeAlarmName: (id, name) => dispatch(changeAlarmName(id, name))
-  })
-)(Alarms));
+export default (Alarms = withRouter(
+  connect(
+    state => ({ alarms: selectAllAlarms(state) }),
+    dispatch => ({
+      toggleAlarm: id => dispatch(toggleAlarm(id)),
+      toggleDay: (id, index) => dispatch(toggleDay(id, index)),
+      changeAlarmName: (id, name) => dispatch(changeAlarmName(id, name))
+    })
+  )(Alarms)
+));

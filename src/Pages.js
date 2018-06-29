@@ -24,13 +24,16 @@ export default class Pages extends Component {
     return (
       <Fragment>
         <ParallaxLayer offset={0} speed={0.2}>
-          <Alarms />
+          <Alarms scrollBack={() => this.scroll(1)} />
         </ParallaxLayer>
         <ParallaxLayer offset={1} speed={0.2}>
-          <Feed />
+          <Feed
+            scrollLeft={() => this.scroll(0)}
+            scrollRight={() => this.scroll(2)}
+          />
         </ParallaxLayer>
         <ParallaxLayer offset={2} speed={0.2}>
-          <Settings />
+          <Settings scrollBack={() => this.scroll(1)} />
         </ParallaxLayer>
       </Fragment>
     );
