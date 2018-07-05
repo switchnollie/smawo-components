@@ -55,8 +55,7 @@
         position: relative;
         justify-content: center;
         align-items: center;
-        transition: background-color 0.2s ease-in-out;
-        cursor: pointer; }
+        transition: background-color 0.2s ease-in-out; }
         .alarms-wrapper .alarms-main .alarms-side-panel .alarm-menu-mode:after {
           content: "";
           position: absolute;

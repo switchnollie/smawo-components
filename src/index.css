@@ -15,7 +15,12 @@ body {
   position: relative;
   height: 100vh;
   width: 100vw;
-  color: #7e81a8; }
+  color: #7e81a8;
+  cursor: url("./assets/cursor.png") 32 32, auto !important;
+  cursor: -webkit-image-set(url("./assets/cursor.png") 1x, url("./assets/cursor@2x.png") 2x) 32 32, auto !important; }
+  body:active {
+    cursor: url("./assets/cursor-active.png") 32 32, auto !important;
+    cursor: -webkit-image-set(url("./assets/cursor-active.png") 1x, url("./assets/cursor-active@2x.png") 2x) 32 32, auto !important; }
 
 .app-container {
   box-sizing: border-box;

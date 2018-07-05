@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+    }
+
+
+    #frame {
+      background-image: url('photo.jpg');
+      background-size: cover;
+      width: 1920px;
+      height: 1080px;
+      position: absolute;
+      left: calc(50% - (1920px / 2));
+      top: calc(50% - (1080px / 2));
+    }
+
+    #app {
+      width: 667px;
+      height: 375px;
+      border: none;
+      transform: scale(0.725) rotate(-0.5deg);
+      position: absolute;
+      top: 452px;
+      left: 634px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="frame">
+    <iframe src="http://localhost:3000" id="app"></iframe>
+  </div>
+</body>
+
+</html>

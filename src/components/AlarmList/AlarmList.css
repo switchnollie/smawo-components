@@ -11,7 +11,6 @@
     width: calc(42% - 30px) !important; }
   .alarm-list .list-item {
     white-space: nowrap;
-    cursor: pointer;
     display: flex;
     position: relative;
     padding: 0 20px;

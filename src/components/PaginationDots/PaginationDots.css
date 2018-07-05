@@ -5,7 +5,6 @@
   min-width: 48px;
   margin: 8px; }
   .pagination-dots .pagination-dot {
-    cursor: pointer;
     z-index: 1;
     border-radius: 50%;
     width: 0.5rem;

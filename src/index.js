@@ -26,6 +26,7 @@ const Routes = () => (
               <Parallax
                 ref={ref => (this.parallaxRef = ref)}
                 pages={3}
+                config={{ tension: 100, friction: 20 }}
                 horizontal
                 scrolling={false}>
                 <Route exact path="/" render={() => <Redirect to="/feed" />} />
