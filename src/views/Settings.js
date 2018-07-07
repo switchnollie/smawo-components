@@ -25,7 +25,9 @@ class Settings extends Component {
         {/* eslint-disable */}
         <div
           style={{
-            transform: `scale(${screen.width / 667})`,
+            transform: `scale(${
+              window.iframeWidth ? window.iframeWidth : screen.width / 667
+            })`,
             transformOrigin: "left top",
             position: "relative",
             top: 0,
