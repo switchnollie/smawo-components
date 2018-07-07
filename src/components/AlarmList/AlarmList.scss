@@ -11,6 +11,10 @@
   flex-direction: column;
   &.collapsed {
     width: calc(42% - 30px) !important;
+
+    .list-item {
+      padding-right: 0.5rem;
+    }
   }
 
   .list-item {
@@ -41,9 +45,18 @@
       }
     }
 
+    &:not(.new-alarm) > span:first-child {
+      display: inline-flex;
+      width: calc(42vw - 30px - 40px);
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .alarm-name {
-      display: inline-block;
-      width: 130px;
+      justify-self: stretch;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .alarm-time {

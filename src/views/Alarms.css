@@ -6,21 +6,21 @@
   position: relative;
   flex-direction: column; }
   .alarms-wrapper .alarms-header {
-    padding: 0 20px;
+    padding: 0 1.11111111rem;
     display: flex;
     position: relative;
-    height: 40px;
+    height: 2.2222222rem;
     align-items: center;
     position: relative;
     color: #7e81a8;
-    font-size: 13px; }
+    font-size: 0.722222rem; }
     .alarms-wrapper .alarms-header:after {
       content: "";
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 1px;
+      height: 0.05555555rem;
       background: linear-gradient(to right, rgba(126, 129, 168, 0) 0%, rgba(181, 183, 211, 0.4) 3%, rgba(181, 183, 211, 0.4) 97%, rgba(126, 129, 168, 0) 100%); }
   .alarms-wrapper .alarms-main {
     display: flex;
@@ -28,15 +28,15 @@
     flex: 1; }
     .alarms-wrapper .alarms-main #overlay-bottom {
       content: "";
-      position: absolute;
-      bottom: 0;
+      position: fixed;
+      top: 75vh;
       left: 0;
       width: 100%;
       height: 25vh;
       z-index: 2;
       pointer-events: none; }
     .alarms-wrapper .alarms-main .alarms-side-panel {
-      width: 60px;
+      width: 3.333333333rem;
       position: relative;
       display: flex;
       flex-direction: column; }
@@ -45,13 +45,13 @@
         position: absolute;
         right: 0;
         top: 0;
-        width: 1px;
+        width: 0.05555555rem;
         height: 100%;
         background: linear-gradient(to bottom, rgba(126, 129, 168, 0) 0%, rgba(181, 183, 211, 0.4) 3%, rgba(181, 183, 211, 0.4) 97%, rgba(126, 129, 168, 0) 100%); }
       .alarms-wrapper .alarms-main .alarms-side-panel .alarm-menu-mode {
         display: flex;
-        width: 60px;
-        height: 60px;
+        width: 3.333333333rem;
+        height: 3.333333333rem;
         position: relative;
         justify-content: center;
         align-items: center;
@@ -62,7 +62,7 @@
           bottom: 0;
           left: 0;
           width: 100%;
-          height: 1px;
+          height: 0.0555555rem;
           background: linear-gradient(to right, rgba(126, 129, 168, 0) 0%, rgba(181, 183, 211, 0.4) 3%, rgba(181, 183, 211, 0.4) 97%, rgba(126, 129, 168, 0) 100%); }
         .alarms-wrapper .alarms-main .alarms-side-panel .alarm-menu-mode.active {
           background-color: #1964cc; }
@@ -77,18 +77,18 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 1px;
+        width: 0.055555555rem;
         height: 100%;
         background: linear-gradient(to bottom, rgba(126, 129, 168, 0) 0%, rgba(181, 183, 211, 0.4) 3%, rgba(181, 183, 211, 0.4) 97%, rgba(126, 129, 168, 0) 100%); }
       .alarms-wrapper .alarms-main .alarm-settings .list-item.header {
         justify-content: flex-start;
         color: #7e81a8;
-        font-size: 13px;
+        font-size: 0.722222rem;
         align-items: flex-end;
-        padding-bottom: 11px;
+        padding-bottom: 0.6111111rem;
         box-sizing: border-box; }
         .alarms-wrapper .alarms-main .alarm-settings .list-item.header img {
-          margin-left: 8px; }
+          margin-left: 0.444444444rem; }
       .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main {
         display: flex;
         flex: 1;
@@ -105,42 +105,42 @@
             position: absolute;
             left: 0;
             top: 0;
-            width: 1px;
+            width: 0.0555555rem;
             height: 100%;
             background: linear-gradient(to bottom, rgba(126, 129, 168, 0) 0%, rgba(181, 183, 211, 0.4) 3%, rgba(181, 183, 211, 0.4) 97%, rgba(126, 129, 168, 0) 100%); }
           .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main .alarm-settings-right .alarm-settings-item {
             display: flex;
             box-sizing: border-box;
-            padding: 6px 17px;
+            padding: 0.3333333rem 0.9444444444rem;
             flex-direction: column;
             width: 100%;
             justify-content: space-between; }
             .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main .alarm-settings-right .alarm-settings-item span:first-child {
               color: #7e81a8;
-              font-size: 13px; }
+              font-size: 0.7222222222rem; }
             .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main .alarm-settings-right .alarm-settings-item span:nth-child(2) {
-              font-size: 16px;
+              font-size: 0.88888888rem;
               color: #fff; }
           .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main .alarm-settings-right .vertical-day-picker-container {
             position: relative;
-            height: calc(100% - 200px);
+            height: calc(100% - 11.111111111rem);
             overflow-x: hidden;
             overflow-y: auto;
-            margin-bottom: 19px;
-            padding: 19px 0; }
+            margin-bottom: 1.0555555rem;
+            padding: 1.0555555rem 0; }
             .alarms-wrapper .alarms-main .alarm-settings .alarm-settings-main .alarm-settings-right .vertical-day-picker-container .day-dot-row {
-              margin-bottom: 14px; }
+              margin-bottom: 0.7777777rem; }
     .alarms-wrapper .alarms-main .my-alarms-container {
-      width: 100%;
+      width: calc(100% - 1.666666rem);
       display: flex; }
       .alarms-wrapper .alarms-main .my-alarms-container .alarm-settings-left {
         width: 57% !important; }
       .alarms-wrapper .alarms-main .my-alarms-container .alarm-settings-right {
         width: 43% !important; }
     .alarms-wrapper .alarms-main .family-members-container {
-      padding: 14px;
+      padding: 0.77777777rem;
       box-sizing: border-box;
-      width: calc(100% - 60px);
+      width: calc(100% - 3.33333rem);
       height: 100%;
       display: flex;
       flex-wrap: wrap;

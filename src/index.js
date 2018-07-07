@@ -11,6 +11,8 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import appReducer from "./reducers/appReducer";
 
+screen && screen.orientation && screen.orientation.lock("landscape"); //eslint-disable-line
+
 const store = createStore(
   appReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

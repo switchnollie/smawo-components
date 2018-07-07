@@ -9,6 +9,8 @@
   flex-direction: column; }
   .alarm-list.collapsed {
     width: calc(42% - 30px) !important; }
+    .alarm-list.collapsed .list-item {
+      padding-right: 0.5rem; }
   .alarm-list .list-item {
     white-space: nowrap;
     display: flex;
@@ -30,9 +32,16 @@
       box-sizing: border-box; }
       .alarm-list .list-item.new-alarm img {
         margin-left: 8px; }
+    .alarm-list .list-item:not(.new-alarm) > span:first-child {
+      display: inline-flex;
+      width: calc(42vw - 30px - 40px);
+      align-items: center;
+      justify-content: space-between; }
     .alarm-list .list-item .alarm-name {
-      display: inline-block;
-      width: 130px; }
+      justify-self: stretch;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
     .alarm-list .list-item .alarm-time {
       color: #7e81a8; }
     .alarm-list .list-item path {

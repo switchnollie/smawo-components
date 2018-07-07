@@ -11,7 +11,8 @@
   flex-direction: column;
   justify-content: center;
   padding: 12px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin-right: 1em; }
   .card .card-headline {
     display: flex;
     justify-content: space-between;
